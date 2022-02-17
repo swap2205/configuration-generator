@@ -1,0 +1,9 @@
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Configuration\App;
+
+$app = new App();
+$app->runCommand($argv);
+exit;

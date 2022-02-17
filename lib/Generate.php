@@ -2,6 +2,11 @@
 
 namespace Configuration;
 
+use Configuration\Factory\ConfigFactory;
+use Configuration\Factory\JsonConfigFactory;
+use Configuration\Factory\YamlConfigFactory;
+use Exception;
+
 class Generate
 {
     public function create(array $filePaths)
@@ -46,10 +51,26 @@ class Generate
 
     private function readFile(string $path, array &$array_data)
     {
-        // echo "$file <br>";
-        if (mime_content_type($path) === 'application/json') {
-            // parse the file
-            $array_data[] = json_decode(file_get_contents($path), 1);
+
+        try{
+            $file_arr = explode(".", $path);
+            $file_extension = $file_arr[count($file_arr) - 1];
+            $configFactory = new ConfigFactory($path);
+            $data = [];
+            if (mime_content_type($path) === 'application/json') {
+                $data = $configFactory->loadFileContents(new JsonConfigFactory());
+            }
+            if (mime_content_type($path) === 'text/plain' && in_array($file_extension,['yaml','yml'])) {
+                $data = $configFactory->loadFileContents(new YamlConfigFactory());
+            }
+
+            if($data){
+                $array_data[] = $data;
+            }
         }
+        catch(Exception $e){
+            
+        }
+
     }
 }
