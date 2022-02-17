@@ -19,8 +19,10 @@ composer install
 
 Use the following command: **php configure generate file_path1 [file_path2] [file_path3] ...**
 
+**Note**: Can accept json & yaml files only
+
 ```bash
-php configure generate files/file1.json files/file2.json
+php configure generate fixtures/config.json fixtures/config.invalid.json fixtures/sample1.yaml
 ```
 
 ### 2. Read the configuration using dot notation
@@ -52,9 +54,10 @@ php configure update database.host 127.0.0.1
 
 Use the following command: **php configure generate file_path1 [file_path2] [file_path3] ...**
 
+**Note**: Can accept json & yaml files only
 ```php
 $generate = new Generate();
-$generate->create(['files/file1.json','files/file2.json']);
+$generate->create(['fixtures/config.invalid.json','fixtures/sample1.yaml']);
 ```
 
 ### 2. Read the configuration using dot notation
