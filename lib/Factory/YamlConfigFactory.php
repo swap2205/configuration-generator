@@ -4,6 +4,12 @@ namespace Configuration\Factory;
 
 class YamlConfigFactory implements ConfigGeneratorFactory
 {
+    /**
+     * Method to load and read yaml file content
+     * @param string $filePath
+     * @return array / false 
+     */
+
     public function create(string $filePath)
     {
         /**

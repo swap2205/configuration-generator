@@ -1,7 +1,8 @@
-<?php 
+<?php
 
 namespace Configuration\Factory;
 
-interface ConfigGeneratorFactory{
+interface ConfigGeneratorFactory
+{
     public function create(string $filePath);
 }

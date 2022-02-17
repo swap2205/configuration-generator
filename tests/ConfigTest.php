@@ -40,7 +40,7 @@ final class ConfigTest extends TestCase
     {
         $generate = new Generate();
 
-        $this->assertIsNumeric($generate->create(['files/file1.json']));
+        $this->assertIsNumeric($generate->create(['fixtures/config.json']));
     }
 
     /**
@@ -50,6 +50,6 @@ final class ConfigTest extends TestCase
     {
         $reader = new Read();
 
-        $this->assertNotNull($reader->get(['id']));
+        $this->assertNotNull($reader->get(['database.host']));
     }
 }

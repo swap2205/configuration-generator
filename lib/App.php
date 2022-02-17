@@ -4,10 +4,15 @@ namespace Configuration;
 
 class App
 {
+    /**
+     * Method to execute the command for configuration options
+     * Available options - 
+     * 1. generate
+     * 2. read
+     * 3. update
+     */
     public function runCommand(array $argv)
     {
-        // print_r($argv);
-
         switch ($argv[1]) {
             case 'generate':
                 $generate = new Generate();

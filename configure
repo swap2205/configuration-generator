@@ -1,6 +1,9 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
+/**
+ * Initate the app
+ */
 
 use Configuration\App;
 

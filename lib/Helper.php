@@ -7,6 +7,10 @@ class Helper
 
     const CONFIG_FOLDER_PATH = "config/";
     const CONFIG_FILE_PATH = Helper::CONFIG_FOLDER_PATH . "app-config.json";
+
+    /**
+     * Method to load configuration from the config file
+     */
     public static function loadConfig(): array
     {
         $config_data = [];
@@ -17,6 +21,10 @@ class Helper
         return $config_data;
     }
 
+    /**
+     * Method to save the passed array data to the configuration file
+     * @param array $config_data - array 
+     */
     public static function saveConfig($config_data)
     {
         if (!file_exists(Helper::CONFIG_FOLDER_PATH)) {
@@ -28,6 +36,11 @@ class Helper
         return file_put_contents(Helper::CONFIG_FILE_PATH, json_encode($config_data));
     }
 
+    /**
+     * Method to add a new value OR update the existing value as per the dot separated path in the configuration
+     * @param string $dotPathKey - key of the fields to be inserted or updated
+     * @param string $value - value of the fields to be inserted or updated
+     */
     public static function updateConfig($dotPathKey, $value): void
     {
         $config_data = self::loadConfig();
@@ -49,6 +62,11 @@ class Helper
         self::saveConfig($config_data);
     }
 
+    /**
+     * Method to add a new value OR update the existing value as per the dot separated path in the configuration
+     * @param string $dotPath - key of the field to read the configuration data
+     * @return string/array - value of the key from configuration file
+     */
     public static function readConfig($dotPath)
     {
         $config_data = self::loadConfig();
