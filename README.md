@@ -19,7 +19,7 @@ composer install
 
 Use the following command: **php configure generate file_path1 [file_path2] [file_path3] ...**
 
-**Note**: Can accept json & yaml files only
+**Note**: Can accept json & yaml files only. For yaml to work, we need to add [php_yaml extension](https://pecl.php.net/package/yaml/2.2.2).
 
 ```bash
 php configure generate fixtures/config.json fixtures/config.invalid.json fixtures/sample1.yaml
@@ -54,7 +54,7 @@ php configure update database.host 127.0.0.1
 
 Use the following command: **php configure generate file_path1 [file_path2] [file_path3] ...**
 
-**Note**: Can accept json & yaml files only
+**Note**: Can accept json & yaml files only. For yaml to work, we need to add [php_yaml extension](https://pecl.php.net/package/yaml/2.2.2).
 ```php
 $generate = new Generate();
 $generate->create(['fixtures/config.invalid.json','fixtures/sample1.yaml']);
